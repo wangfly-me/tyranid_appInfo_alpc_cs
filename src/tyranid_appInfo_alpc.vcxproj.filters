@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="aic.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="appinfo\x86-32\appinfo32.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="appinfo\x64\appinfo64.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="tyranid_appInfo_alpc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{17bf5a2c-ae4e-4c57-9e80-4b38a2200d62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{69527b4b-6af2-4445-92ee-c6021176dc40}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="consts.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="appinfo\x86-32\appinfo32.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="appinfo\x64\appinfo64.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
