@@ -48,7 +48,7 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 
 准备一个免杀木马，然后选择对应选项。
 
-![image-20231122234837320](./assets/image-20231122234837320.png)
+![image-20231123001429690](./assets/image-20231123001429690.png)
 
 ![image-20231122234858214](./assets/image-20231122234858214.png)
 
