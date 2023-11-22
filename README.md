@@ -4,7 +4,7 @@ This amazing trick by James Forshaw was released in 2019 [Project Zero - Calling
 
 Tested works well on Windows 11 :)
 
-
+魔改自：https://github.com/aaaddress1/PR0CESS/tree/main/UACBypassJF_RpcALPC
 
 ## BOF
 
